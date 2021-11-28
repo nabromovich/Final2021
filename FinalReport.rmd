@@ -55,7 +55,7 @@ Malesmod <- fisher.test(table1)
   
 According to the Chi-Squared test, the p-value is very low at (2.2e-16).  This number indicates that we need to reject the null hypothesis and that there is a difference between the males that took the placebo and those whom took the drug.
 
-The effectiveness of Covid91 vaccine for males is 67.2%. The confidence interval for males is 63.1 to 71.
+The effectiveness of Covid91 vaccine for males is 67.2%. The confidence interval for males is 63.1 to 90.
 
 ```{r}
 Maleestimate <- Malesmod$estimate
@@ -83,6 +83,44 @@ Woman <- filter(Covid91, sex=="Woman")
 barchartGC(~infected + treatment,data=Woman)
 barchartGC(~infected + treatment,data=Woman, type="percent")
 
+```
+  
+The box plot is showing that the drug isn't as effective in woman than in males.  It presents that approximately 58% of woman that took the durg still got sick verses about 42% of placebo users getting sick.  
+
+### Numerical Summaries  
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Woman)
+rowPerc(table1)
+colPerc(table1)
+```
+  
+  The numerical summaries confirmed what we saw in the box plot.  58.1% of women that took the Covid91 drug still got sick in comparison to the placebo drug taking women on only got sick 41.8% of the time. 
+  
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+Womansmod <- fisher.test(table1)
+```
+According to the Chi-Squared test, the p-value for women is .0006. 
+
+The Effectiveness of the Covid91 vaccine in women is 40.4% with a confidence level of 35.1 to 85.   
+
+```{r}
+Womanestimate <- Womansmod$estimate
+Womanlow <- Womansmod$conf.int[1]
+Womanhigh <-Womansmod$conf.int[2]
+Womanlowprob <- Womanlow / (1+Womanlow)
+Womanloweffect <- Womanlowprob *100
+
+Womanhighprob <- Womanhigh / (1+Womanlow)
+Malehigheffect <- Malehighprob *100
+
+Womanprod <- Womanestimate / (1+Womanestimate)
+Womanseffect <- Womanprod * 100
+
+options(digit=1)
 ```
 
 # Drug Users
