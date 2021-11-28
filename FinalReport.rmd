@@ -124,6 +124,21 @@ options(digit=1)
 ```
 
 # Drug Users
+```{r}
+Users <- filter(Covid91, DrugUser=="yes")
+```
+
+```{r}
+barchartGC(~infected + treatment,data=Users)
+barchartGC(~infected + treatment,data=Users, type="percent")
+
+```
+  
+The box plot for the group studied called drug users show that the Covid91 vaccine is working.  Within the drug users that got the vaccine close to half of them got sick when compared to the drug users that got the placebo vaccine.     
+
+
+
+
 
 # LGBTQ
 
