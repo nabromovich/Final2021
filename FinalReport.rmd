@@ -115,7 +115,7 @@ Womanlowprob <- Womanlow / (1+Womanlow)
 Womanloweffect <- Womanlowprob *100
 
 Womanhighprob <- Womanhigh / (1+Womanlow)
-Malehigheffect <- Malehighprob *100
+Womanhigheffect <- Womanhighprob *100
 
 Womanprod <- Womanestimate / (1+Womanestimate)
 Womanseffect <- Womanprod * 100
@@ -135,6 +135,44 @@ barchartGC(~infected + treatment,data=Users, type="percent")
 ```
   
 The box plot for the group studied called drug users show that the Covid91 vaccine is working.  Within the drug users that got the vaccine close to half of them got sick when compared to the drug users that got the placebo vaccine.     
+
+
+### Numerical Summaries 
+
+```{r}
+table3 <- xtabs(~infected + treatment, data=Users)
+rowPerc(table3)
+colPerc(table3)
+```
+  
+The numerical summary on the drug users group shows again that the Covid91 vaccine is work for them.  The numbers show that 33.3% of drug users that got the Covid91 vaccine got sick while 66.7% of the drug users who only got the placebo vaccine got sick.  This shows that within the drug user group that they are two times more likely to get sick if they didn't get the Covid91 vaccine. 
+
+
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+fisher.test(table3)
+Usersmod <- fisher.test(table3)
+```
+
+
+
+
+```{r}
+Usersestimate <- Usersmod$estimate
+Userslow <- Usersmod$conf.int[1]
+Usershigh <-Usersmod$conf.int[2]
+Userslowprob <- Userslow / (1+Womanlow)
+Usersloweffect <- Userslowprob *100
+
+Usershighprob <- Usershigh / (1+Userslow)
+Usershigheffect <- Usershighprob *100
+
+Usersprod <- Usersestimate / (1+Usersestimate)
+Userseffect <- Usersprod * 100
+
+options(digit=1)
+```
 
 
 
