@@ -34,6 +34,26 @@ barchartGC(~infected + treatment,data=Males, type="percent")
   
 The box plot above in males that where sick the drug worked for them.  The fact that we are seeing males that took the placebo medication got sick verses the healthy guys that were 50/50 split shows that they drug had a positive effect in the data given. 
 
+### Numerical Summaries  
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Males)
+rowPerc(table1)
+colPerc(table1)
+```
+  
+The numerical data show that 66.9% of people that took the placebo got sick while only 33% of people that took the drug got sick.  This shows that there is a 2:1 spread and show the drug to be effective. 
+
+## Inferential  
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+  
+  
+
 # Females
 ```{r}
 Woman <- filter(Covid91, sex=="Woman")
