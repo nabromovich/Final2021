@@ -50,9 +50,19 @@ The numerical data show that 66.9% of people that took the placebo got sick whil
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
+Malesmod <- fisher.test(table1)
 ```
   
-  
+According to the Chi-Squared test, the p-value is very low at (2.2e-16).  This number indicates that we need to reject the null hypothesis and that there is a difference between the males that took the placebo and those whom took the drug.
+
+The effectiveness of Covid91 vaccine for males is 67.2 %
+
+```{r}
+Maleestimate <- Malesmod$estimate
+Maleprod <- Maleestimate / (1+Maleestimate)
+Maleeffect <- Maleprod * 100
+```
+
 
 # Females
 ```{r}
