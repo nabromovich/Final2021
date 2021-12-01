@@ -106,7 +106,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 Womansmod <- fisher.test(table1)
 ```
-According to the Chi-Squared test, the p-value for women is .0006. This number indicates that we need to reject the null hypothesis and that there is a difference between the women that took the placebo and those whom took the drug.
+According to the Chi-Squared test, the p-value for women is .0006. This number indicates that we need to reject the null hypothesis and that there is a difference between the women that took the placebo and those whom took the drug.  The drug is not effective compared tot he placebo.
 
 
 ## Calculating Effectiveness For Women
@@ -160,7 +160,7 @@ chisqtestGC(table3)
 fisher.test(table3)
 Usersmod <- fisher.test(table3)
 ```
-The p-value of the part of the study is 0.002273.  This number indicates that we need to reject the null hypothesis and that there is a difference between the drug users that took the placebo and those whom took the drug.
+The p-value of the part of the study is 0.002273.  This number indicates that we need to reject the null hypothesis and that there is a difference between the drug users that took the placebo and those whom took the drug.  The drug in this group of drug users shows to be effective. 
 
 
  
@@ -242,8 +242,14 @@ options(digit=1)
 
 # Conclusions and recommendations
 
-In conclusion we tested four groups of people.  The groups being males, females, drug users and people that are LGBTQ.  
+In conclusion we tested four groups of people.  The groups being males, females, drug users and people that are LGBTQ.  In each group we looked at created box plots to see how the COVID91 treatment compared to placebo in people that got sick and stayed healthy.  Numerical summeries, Chi-squared test and Fisher exact test helped us break that data down even further to be able to compute the COVID91 drug effectiveness for each group tested.
 
+A strong recommendation only based on the data received would be to only take the COVID91 vaccine if you are in the LGBTQ group.  The LGBTQ group tested is the only group that the COVID91 vaccine was effective in.  All other groups, males, females and drug users showed an ineffectiveness to the COVID91 vaccine with the drug users being the least effective group. 
+
+
+#  **Disclaimer** 
+
+This study does not provide medical advise.  Please see your doctor if you think you have COVID91.
 
 
 
