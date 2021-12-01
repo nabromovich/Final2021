@@ -55,7 +55,10 @@ Malesmod <- fisher.test(table1)
   
 According to the Chi-Squared test, the p-value is very low at (2.2e-16).  This number indicates that we need to reject the null hypothesis and that there is a difference between the males that took the placebo and those whom took the drug.
 
-The effectiveness of Covid91 vaccine for males is 67.2%. The confidence interval for males is 63.1 to 90.
+## Calculating Effectiveness For Males
+
+
+The effectiveness of Covid91 vaccine for males is 67.2%. The confidence interval for males is 63.1 to 70.9.
 
 ```{r}
 Maleestimate <- Malesmod$estimate
@@ -64,7 +67,7 @@ Malehigh <-Malesmod$conf.int[2]
 Malelowprob <- Malelow / (1+Malelow)
 Maleloweffect <- Malelowprob *100
 
-Malehighprob <- Malehigh / (1+Malelow)
+Malehighprob <- Malehigh / (1+Malehigh)
 Malehigheffect <- Malehighprob *100
 
 Maleprod <- Maleestimate / (1+Maleestimate)
@@ -85,7 +88,7 @@ barchartGC(~infected + treatment,data=Woman, type="percent")
 
 ```
   
-The box plot is showing that the drug isn't as effective in woman than in males.  It presents that approximately 58% of woman that took the durg still got sick verses about 42% of placebo users getting sick.  
+The box plot is showing that the drug isn't as effective in woman than in males.  It presents that approximately 58% of woman that took the drug still got sick verses about 42% of placebo users getting sick.  
 
 ### Numerical Summaries  
 
@@ -105,7 +108,10 @@ Womansmod <- fisher.test(table1)
 ```
 According to the Chi-Squared test, the p-value for women is .0006. This number indicates that we need to reject the null hypothesis and that there is a difference between the women that took the placebo and those whom took the drug.
 
-The Effectiveness of the Covid91 vaccine in women is 40.4% with a confidence level of 35.1 to 55.   
+
+## Calculating Effectiveness For Women
+  
+The Effectiveness of the Covid91 vaccine in women is 40.4% with a confidence level of 35.1 to 45.9.   
 
 ```{r}
 Womanestimate <- Womansmod$estimate
@@ -114,7 +120,7 @@ Womanhigh <-Womansmod$conf.int[2]
 Womanlowprob <- Womanlow / (1+Womanlow)
 Womanloweffect <- Womanlowprob *100
 
-Womanhighprob <- Womanhigh / (1+Womanlow)
+Womanhighprob <- Womanhigh / (1+Womanhigh)
 Womanhigheffect <- Womanhighprob *100
 
 Womanprod <- Womanestimate / (1+Womanestimate)
@@ -157,7 +163,7 @@ Usersmod <- fisher.test(table3)
 The p-value of the part of the study is 0.002273.  This number indicates that we need to reject the null hypothesis and that there is a difference between the drug users that took the placebo and those whom took the drug.
 
 
-The effectiveness of the Covid91 vaccine among drug users is 64.7% with a confidence level of 54 to 125. 
+ 
 
 
 
@@ -168,7 +174,7 @@ Usershigh <-Usersmod$conf.int[2]
 Userslowprob <- Userslow / (1+Userslow)
 Usersloweffect <- Userslowprob *100
 
-Usershighprob <- Usershigh / (1+Userslow)
+Usershighprob <- Usershigh / (1+Usershigh)
 Usershigheffect <- Usershighprob *100
 
 Usersprod <- Usersestimate / (1+Usersestimate)
@@ -176,7 +182,9 @@ Userseffect <- Usersprod * 100
 
 options(digit=1)
 ```
-
+## Calculating Effectiveness For Drug Users
+  
+The effectiveness of the Covid91 vaccine among drug users is 64.7% with a confidence level of 54 to 73.6.
 
 
 # LGBTQ
@@ -192,7 +200,7 @@ barchartGC(~infected + treatment,data=Gays, type="percent")
   
 The data in the above box plot shows that the Covid91 vaccine does not help in the LGBTQ group of people.  This is shown due to the amount of people that took the drug and still got sick while less than half of the people in this group took the placebo got sick when compared to the vaccine group.
 
-# Numerical Summeries 
+## Numerical Summeries 
 
 ```{r}
 table3 <- xtabs(~infected + treatment, data=Gays)
@@ -200,7 +208,7 @@ rowPerc(table3)
 colPerc(table3)
 ```
   
-The numerical summery of the gays group backs up the data we see in the box plot run earlier.  71% of the gays that took the Covid91 vaccine still ended up getting the virus while the 30% of gays that took the placebo got sick. 
+The numerical summery of the gays group backs up the data we see in the box plot run earlier.  71% of the gays that took the Covid91 vaccine still ended up getting the virus while the 30% of gays that took the placebo got sick.  It shows that the COVID91 vaccine does not work in the LGBTQ group. 
 
 ```{r}
 chisq.test(table3)
@@ -208,10 +216,12 @@ chisqtestGC(table3)
 fisher.test(table3)
 Gaysmod <- fisher.test(table3)
 ```
-The gays data shows a p-value of (5.741e-06).
+The gays data shows a p-value of (5.741e-06).  This would tell us that we will reject the null hypothesis and that there is a difference between the LGBTQ group that took the COVID91 vaccine and the part of the LGBTQ group that took the placebo drug.  The COVID 91 vaccine is ineffective in the group of LGBTQ people.  
 
-The Covid91 vaccine effectiveness in the gays group is very low at only 28.6% effective with a confidence level of 20.5 to 48.6. 
 
+## Calculating Effectiveness For LGBTQ Group
+  
+The Covid91 vaccine effectiveness in the gays group is very low at only 28.6% effective with a confidence level of 20.5 to 38. 
 
 
 ```{r}
@@ -221,7 +231,7 @@ Gayshigh <-Gaysmod$conf.int[2]
 Gayslowprob <- Gayslow / (1+Gayslow)
 Gaysloweffect <- Gayslowprob *100
 
-Gayshighprob <- Gayshigh / (1+Gayslow)
+Gayshighprob <- Gayshigh / (1+Gayshigh)
 Gayshigheffect <- Gayshighprob *100
 
 Gaysprod <- Gaysestimate / (1+Gaysestimate)
@@ -231,4 +241,9 @@ options(digit=1)
 ```
 
 # Conclusions and recommendations
+
+In conclusion we tested four groups of people.  The groups being males, females, drug users and people that are LGBTQ.  
+
+
+
 
